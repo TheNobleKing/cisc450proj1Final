@@ -3,9 +3,8 @@ all : client.c server.c
 	gcc server.c -o server.o
 clean: 
 	rm *.o
-	rm a.out
 	rm out.txt
-
+	rm a.out
 client: client.o
 	./client.o
 

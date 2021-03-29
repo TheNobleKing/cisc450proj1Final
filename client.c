@@ -54,13 +54,13 @@ printf("out.txt created, attempting to write...\n");
     bytetotal += c;
     if (c == 0){
       printf("End of Transmission packet with sequence number %d recieved with %d data bytes\n", n, c);
+      printf("%s",buffer);
       break;
-      return;
     } else if( c < 0){
+      printf("Terminating process\n");
       break;
       return;
     }
-
     fprintf(fp, "%s", buffer); //write to file
     bzero(buffer, SIZE);
   }

@@ -46,7 +46,6 @@ void send_file(FILE *fp, int sockfd){
   n = 0; bytetotal = 0;
 
   while((fgets(data, SIZE, fp)) != NULL) {
-    bzero(data, SIZE);
     check = NULL; //reset chkval
     check = write(sockfd, data, SIZE, 0);
     if(check > 0){
@@ -57,7 +56,8 @@ void send_file(FILE *fp, int sockfd){
      c = sizeof(data) / sizeof(data[0]);
      printf("Packet %d transmitted with %d data bytes\n", n, c);
      bytetotal += c;
-     }
+     bzero(data, SIZE);
+  }
      printf("End of Transmission Packet with sequence number %d transmitted with %d data bytes\n", ++n, 0);
      printf("Number of data bytes transmitted: %d\n", bytetotal);
 }
